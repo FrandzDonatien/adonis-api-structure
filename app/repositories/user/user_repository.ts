@@ -6,7 +6,7 @@ import db from "@adonisjs/lucid/services/db";
 export default class UserRepository{
 
   //methodes
-  public async registerUser(data: any): Promise<User>{
+  public async registerUser(data: Partial<User>): Promise<User>{
     return await User.create(data)
   }
 

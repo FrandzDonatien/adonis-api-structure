@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { I18n } from '@adonisjs/i18n'
 import i18nManager from '@adonisjs/i18n/services/main'
 import type { NextFn } from '@adonisjs/core/types/http'
@@ -56,9 +57,9 @@ export default class DetectUserLocaleMiddleware {
      * Remove the following block of code, if you are not using
      * edge templates.
      */
-    if ('view' in ctx) {
-      ctx.view.share({ i18n: ctx.i18n })
-    }
+    // if ('view' in ctx) {
+    //   ctx.view.share({ i18n: ctx.i18n })
+    // }
 
     return next()
   }

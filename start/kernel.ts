@@ -37,7 +37,7 @@ router.use([
   () => import('@adonisjs/core/bodyparser_middleware'),
   () => import('@adonisjs/auth/initialize_auth_middleware'),
   () => import('#middleware/detect_user_locale_middleware'),
-  () => import('#middleware/language_middleware'),
+  // () => import('#middleware/language_middleware'),
 ])
 
 /**

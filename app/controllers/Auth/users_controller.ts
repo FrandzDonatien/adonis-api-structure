@@ -8,20 +8,24 @@ import { inject } from '@adonisjs/core'
 @inject()
 export default class UsersController {
 
+  //attributs
   private authService: AuthService
   private apiResponse: ApiResponse
 
 
+  //contructor
   constructor( authService: AuthService, apiResponse: ApiResponse){
     this.authService = authService
     this.apiResponse = apiResponse
   }
 
+  //methodes
+
   public async register({request}:HttpContext) {
     const payload = await registerValidator.validate(request.body())
 
     try {
-      const user = this.authService.register(payload)
+      const user = await this.authService.register(payload)
       // const user = await User.create(payload)
       const returnData = {
         user: user

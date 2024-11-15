@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import app from '@adonisjs/core/services/app'
 import { HttpContext, ExceptionHandler } from '@adonisjs/core/http'
+import { errors } from '@vinejs/vine'
 
 export default class HttpExceptionHandler extends ExceptionHandler {
   /**
@@ -13,7 +15,16 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
-    return super.handle(error, ctx)
+    
+    // return super.handle(error, ctx)
+    if (error instanceof errors.E_VALIDATION_ERROR) {
+      return ctx.response.status(422).send({
+        status: 'error',
+        message: 'Validation failed',
+        details: error?.messages,
+      })
+    }
+    
   }
 
   /**

@@ -15,7 +15,7 @@ export default class AuthService{
   }
 
   //methodes
-  public async register(data: any){
+  public async register(data: Partial<User>){
     return await this.userRepository.registerUser(data);
   }
   
