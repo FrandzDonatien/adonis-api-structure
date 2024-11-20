@@ -66,4 +66,17 @@ export default class UsersController {
       return this.apiResponse.error('invalid_credentials')
     }
   }
+
+  async logout({ auth, response }: HttpContext) {
+    const user = await auth.authenticate()
+    if (user) {
+      await User.accessTokens.delete(user, user.currentAccessToken.identifier)
+    }
+    return response.status(200).json({
+      result: null,
+      success: true,
+      message: 'deconnexion',
+      errors: null,
+    })
+}
 }
