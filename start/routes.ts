@@ -9,8 +9,9 @@
 
 import router from '@adonisjs/core/services/router'
 
-import './api/V1/auth.js'
 import { middleware } from './kernel.js'
+import './api/V1/auth.js'
+import './api/V1/home.js'
 
 router
   .post('/', async () => {

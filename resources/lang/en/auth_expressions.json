@@ -1,9 +1,4 @@
 {
-  "unauthorized_request": "Unauthorized request",
-  "welcome": "Welcome to our application!",
-  "successfully":"creation passed",
-  
-
   "unauthorized": "You are not authorized to perform this action.",
   "invalid_credentials": "The provided credentials are invalid.",
   "missing_keys": "The required authentication keys are missing.",

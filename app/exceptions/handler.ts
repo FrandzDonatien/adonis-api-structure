@@ -15,7 +15,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
-    
+
     // return super.handle(error, ctx)
     if (error instanceof errors.E_VALIDATION_ERROR) {
       return ctx.response.status(422).send({
@@ -24,6 +24,8 @@ export default class HttpExceptionHandler extends ExceptionHandler {
         details: error?.messages,
       })
     }
+
+    
     
   }
 

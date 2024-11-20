@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
 
 import User from "#models/user"; 
+import { inject } from "@adonisjs/core";
 import db from "@adonisjs/lucid/services/db";
 
+@inject()
 export default class UserRepository{
 
   //methodes
