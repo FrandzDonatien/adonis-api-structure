@@ -41,7 +41,6 @@ export default class UsersController {
   public async login({request}:HttpContext) {
     const {email, password} = request.only(['email', 'password'])
     try {
-      
       const user = this.userRepo.getByEmail(email)
       if(!user)
         return this.apiResponse.error('invalid_credentials')
