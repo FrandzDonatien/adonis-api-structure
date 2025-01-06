@@ -1,25 +1,30 @@
 # For more information: https://github.com/julien-r44/adonis-sail
 services:
-  mysql:
-    image: 'mysql/mysql-server:8.0'
-    ports:
-      - '${MYSQL_PORT:-3306}:3306'
+  adonisDb:
+    # image: postgres
+    # container_name: adonis-db
+    # restart: always
+    # environment:
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASSWORD=root
+    #   - POSTGRES_DB=adonisApi
+    # ports:
+    #   - 5432
+    image: mysql:8.0
+    container_name: adonis-db
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_DATABASE: '${MYSQL_DB_NAME}'
-      MYSQL_USER: '${MYSQL_USER}'
-      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-    volumes:
-      - 'sailmysql:/var/lib/mysql'
-    networks:
-      - sail
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-p${MYSQL_PASSWORD}"]
-      retries: 3
-      timeout: 5s
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=adonisApi
+    ports:
+      - 3306:3306
 
+  adminer:
+    image: adminer
+    container_name: adonisdb-ihm
+    restart: always
+    ports:
+      - 8080:8080
 
 networks:
   sail:
